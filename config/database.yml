@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: spooner_app_development
+  pool: 5
+  username: sarahadler
+  password:
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: spooner_app_test
+  pool: 5
+  username: sarahadler
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: spooner_app_production
+  pool: 5
+  username: sarahadler
+  password:
