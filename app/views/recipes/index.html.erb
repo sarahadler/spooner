@@ -1,0 +1,9 @@
+<h1><%= @ingredients %>, eh?</h1>
+
+<% if @common.count == 0 %>
+	<h2>Sorry toots. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.<h2>
+<% elsif @common.count == 1 %>
+	<h2>We found <%= @common.count %> recipe for you.<h2>
+<% else %>
+	<h2>We found <%= @common.count %> recipes for you.<h2>
+<% end %>

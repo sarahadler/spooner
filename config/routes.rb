@@ -4,6 +4,10 @@ SpoonerApp::Application.routes.draw do
 
   root :to => "recipes#search"
 
+  post '/recipes' => 'recipes#index'
+
+
+
   resources :recipes, :except => [:create, :new]
   resources :users
   # The priority is based upon order of creation:
