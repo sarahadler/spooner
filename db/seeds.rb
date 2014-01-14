@@ -8,13 +8,14 @@
 
 
 
-#  `psql spooner_app_development < db.sql`
+  `psql spooner_app_development < database.sql`
+  `psql spooner_app_test < database.sql`
 
-require "CSV"
-require "pry"
+# require "CSV"
+# require "pry"
 
 
-###################################################### PARSE DATA
+# ##################################################### PARSE DATA
 
 # @data = []
 # CSV.foreach( Rails.root.join('lib','data','wp_posts.csv')) do |row|
@@ -29,20 +30,20 @@ require "pry"
 
 # ###################################################### GET JOIN TABLE
 
-@post_meta = []
-CSV.foreach( Rails.root.join('_test_data','wp_postmeta.csv')) do |row|
-	new_el = {}
-	new_el[:meta_id] = row[0]
-	new_el[:post_id] = row[1]
-	new_el[:meta_key] = row[2]
-	new_el[:meta_value] = row[3]
-	@post_meta << new_el
-end
+# @post_meta = []
+# CSV.foreach( Rails.root.join('_test_data','wp_postmeta.csv')) do |row|
+# 	new_el = {}
+# 	new_el[:meta_id] = row[0]
+# 	new_el[:post_id] = row[1]
+# 	new_el[:meta_key] = row[2]
+# 	new_el[:meta_value] = row[3]
+# 	@post_meta << new_el
+# end
 
-@post_meta.keep_if {|x| x[:meta_key] == '_thumbnail_id'}
+# @post_meta.keep_if {|x| x[:meta_key] == '_thumbnail_id'}
 
 
-# ###################################################### PULL OUT RECIPES
+# # ###################################################### PULL OUT RECIPES
 
 # @data.each do |entry| 
 # 	if entry[:post_type] == 'recipe' || entry[:post_type] == 'recipes' 
@@ -79,16 +80,16 @@ end
 # 	end
 # end
 
-###################################################### ADD JOINER/ ASSOC TABLES
+# ###################################################### ADD JOINER/ ASSOC TABLES
 
-@post_meta.each do |entry|
-	if Recipe.find_by_spoon_id(entry[:post_id])
-		Joiner.create({
-			recipe_id: Recipe.find_by_spoon_id(entry[:post_id]).id,
-			photo_id: Photo.find_by_spoon_id(entry[:meta_value]).id
-			})
-	end
-end
+# @post_meta.each do |entry|
+# 	if Recipe.find_by_spoon_id(entry[:post_id])
+# 		Joiner.create({
+# 			recipe_id: Recipe.find_by_spoon_id(entry[:post_id]).id,
+# 			photo_id: Photo.find_by_spoon_id(entry[:meta_value]).id
+# 			})
+# 	end
+# end
 
 
 
