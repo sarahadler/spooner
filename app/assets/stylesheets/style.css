@@ -1,6 +1,9 @@
 body {
 	background-size:cover;
 	font-family:'museo-sans-rounded';
+}
+
+.container {
 	text-align:center;
 }
 
@@ -21,16 +24,7 @@ button#submit {
 .recipe-show h1 {
 	font-size:40px;
 	text-shadow: 6px 0px rgba(0,0,0,.4);
-
-}
- 
-.recipe-show a {
-	color:white;
-}
-
-.recipe-show a:hover {
-	text-decoration: none;
-	color:#efefef;
+	color:#ffffff;
 }
 
 .recipe-show p {
@@ -40,16 +34,24 @@ button#submit {
 	text-shadow: 2px 2px rgba(0,0,0,.4);
 }
 
-.form-horizontal .radio {
-	position:relative;
-	bottom:15px;
-}
-
 .form-horizontal {
 	margin:50px 20px;
 }
 
+.sidenote {
+	color:#cccccc;
+	font-size: 14px;
+	font-weight:300;
+	text-transform:uppercase;
+}
 
+.alert {
+	color:#cc6666;
+}
+
+.btn.search {
+	margin: 20px;
+}
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */

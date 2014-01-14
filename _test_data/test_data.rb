@@ -30,24 +30,31 @@ end
 @post_meta.keep_if {|x| x[:meta_key] == '_thumbnail_id'}
 
 
-###################################################### PULL OUT RECIPES & ATTACHMENTS
+###################################################### PULL OUT RECIPES
 
 @recipes = []
 @attachments = []
 
 @data.each do |entry| 
 	if entry[:post_type] == 'recipe' || entry[:post_type] == 'recipes' 
+
+############### FIX URLs
+
 		entry[:url] = entry[:url].gsub(/\d{4}\/\d{,2}\/\d{,2}/, 'recipe')
+		if entry[:url].include?('recipe') == false
+			entry[:url] = entry[:url].gsub('.com/', '.com/recipe/')
+		end
+
+############## ADD INGREDIENTS TO RECIPE HASH -------------- this is very flawed
+	
+		recipe[:ingredients] = recipe[:post_content].split(/(Ingredients|Directions)/)[2]
 		@recipes << entry
+
+###################################################### PULL OUT ATTACHMENTS
+
 	elsif entry[:post_type] == 'attachment' 
 		@attachments << entry
 	end
-end
-
-###################################################### ADD INGREDIENTS TO RECIPE HASH
-
-@recipes.each do |recipe|
-	recipe[:ingredients] = recipe[:post_content].split(/(Ingredients|Directions)/)[2]
 end
 
 ###################################################### GET USER INPUT TO CREATE REGEX

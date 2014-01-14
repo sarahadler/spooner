@@ -1,18 +1,29 @@
 <h1><%= @ingredients %>, eh?</h1>
 <% if @common == nil || @common.count == 0 %>
-	<h2>Sorry honey. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.<h2>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h4>Sorry honey. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.<h4>
+		</div>
+	</div>
 <% else %>
 	<% if @common.count == 1 %>
 		<h2>We found <%= @common.count %> recipe for you.<h2>
 	<% else %>
 		<h2>We found <%= @common.count %> recipes for you.<h2>
+		<ul class="list-unstyled">
+			<% @common.each do |recipe| %>
+			<li><a href="<%= recipe_path(recipe.id)%>"><%= recipe.title %></a></li>
+			<% end %>
+		</ul>
 	<% end %>
-<ul class="list-unstyled">
-	<% @common.each do |recipe| %>
-	<li><a href="<%= recipe_path(recipe.id)%>"><%= recipe.title %></a></li>
-	<% end %>
-</ul>
 <% end %>
 &nbsp;
-<p>Feelin' other flavors?</p>
-<a class="btn btn-default" href="/">Search Again</a>
+<h3>Feelin' other flavors?</h3>
+<a class="btn btn-default search" href="/">Search Again</a>
+<% if @common == nil || @common.count == 0 %>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<p class="sidenote alert">*Be sure to use commas or 'and's between stuff, please. We wanted to make sure you could ask us for a "bell pepper" and "bell and pepper".</p>
+		</div>
+	</div>
+<% end %> 

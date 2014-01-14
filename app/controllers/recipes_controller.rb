@@ -12,15 +12,14 @@ class RecipesController < ApplicationController
 	 		####  MAKE PARAMS USABLE
 
 	 		@ingredients = params[:ingredients]
-	 		array = @ingredients.split(/,|and/)
+	 		array = @ingredients.split(/,|and|&/)
 		 	answer = array.map {|answer| answer.strip}
 		
 			####  IF FILTERING BY 'AND'
-	 		
 	 		if params[:how] == "and"
 				regex = answer.map { |answer| Regexp.new(answer, 'i') }	
+				@found = {}
 					regex.each do |regex|
-						@found = {}
 						@found[regex.to_s.to_sym] = []
 						Recipe.all.each do |recipe| 
 							if recipe[:ingredients] =~ regex
@@ -28,12 +27,10 @@ class RecipesController < ApplicationController
 							end
 						end
 					end
-				unless @found.values.first.empty?
 				@common = @found.values.first
 					@found.values.each do |array| 
 						@common = @common & array
 					end
-				end
 
 			####  IF FILTERING BY 'OR'
 
@@ -48,8 +45,11 @@ class RecipesController < ApplicationController
 					end
 				end
 			end
+
+			####  RETURN RESULTS
+
 			@common
-			@ingredients = @ingredients.split(', ').join(' and ')
+			@ingredients = array.join(' and ')
 	 	else
 	 		redirect_to root_path
 	 	end

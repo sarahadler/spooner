@@ -8,4 +8,5 @@
 
 
 
-`psql spooner_app_development < db.sql`
+# `psql spooner_app_development < db.sql`
+

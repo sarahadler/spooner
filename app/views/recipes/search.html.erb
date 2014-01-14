@@ -2,23 +2,19 @@
 	<h1>Hey toots, what's cooking in your kitchen tonight?</h1>
 	<form class="form-horizontal" role="form" action="<%= recipes_path %>" method="get">
 		<div class="form-group">
-			<div class="col-xs-11">
-				<input class="search-text form-control" type="text" name="ingredients" placeholder="In my kitchen, I have..." autocomplete="on">
+			<input class="search-text form-control" type="text" name="ingredients" placeholder="In my kitchen, I have..." autocomplete="on">
+		<div class="radio col-xs-6">
+		  <label>
+		    <input type="radio" name="how" id="optionsRadios1" value="and" checked>
+				I wanna use all this in the same recipe.
+		  </label>
 		</div>
-		<div class="col-xs-1">
-			<div class="radio">
-			  <label>
-			    <input type="radio" name="how" id="optionsRadios1" value="and" checked>
-					AND
-			  </label>
-			</div>
-			<div class="radio">
-			  <label>
-			    <input type="radio" name="how" id="optionsRadios2" value="or">
-					OR
-			  </label>
-			 </div>
-			</div>
+		<div class="radio col-xs-6">
+		  <label>
+		    <input type="radio" name="how" id="optionsRadios2" value="or">
+				I dunno, I just like this stuff.
+		  </label>
+		 </div>
 		</div>
 		<div class="col-md-8 col-md-offset-2">
 			<button class="btn-lg btn btn-default" type="submit" id="submit">Let's Spoon</button>

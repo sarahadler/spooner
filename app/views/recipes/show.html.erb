@@ -5,8 +5,10 @@
 
 
 <div class="recipe-show col-md-8 col-md-offset-2">
-	<a href="<%= @recipe.url %>"><h1><%= @recipe.title %></h1></a>
-	<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <a href="<%= @recipe.url %>"><%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></a></p>
+	<h1><%= @recipe.title %></h1>
+	<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
 	<button class="btn btn-default" onclick="goBack()">Go Back</button>
+
+	<a class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
 </div>
 
