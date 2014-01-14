@@ -1,10 +1,7 @@
-<% photo_url = Joiner.find_by_recipe_id(@recipe.id).photo.url %>
-
-<style>
-	body {
-		background-image:url(<%= photo_url %>);
-	}
-</style>
+<% if Joiner.find_by_recipe_id(@recipe.id) %>
+	<% photo_url = Joiner.find_by_recipe_id(@recipe.id).photo.url %>
+	<style>body {background-image:url(<%= photo_url %>);}</style>
+<% end %>
 
 
 <div class="recipe-show col-md-8 col-md-offset-2">

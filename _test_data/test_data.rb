@@ -37,6 +37,7 @@ end
 
 @data.each do |entry| 
 	if entry[:post_type] == 'recipe' || entry[:post_type] == 'recipes' 
+		entry[:url] = entry[:url].gsub(/\d{4}\/\d{,2}\/\d{,2}/, 'recipe')
 		@recipes << entry
 	elsif entry[:post_type] == 'attachment' 
 		@attachments << entry
