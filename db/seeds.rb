@@ -15,7 +15,10 @@ require "csv"
 require "pry"
 
 
+
+puts 'Time to data'
 ##################################################### PARSE DATA
+
 
 @data = []
 CSV.foreach( Rails.root.join('lib','data','wp_posts.csv')) do |row|
@@ -28,6 +31,7 @@ CSV.foreach( Rails.root.join('lib','data','wp_posts.csv')) do |row|
 	@data << new_el
 end
 
+puts 'Time to post_media'
 ###################################################### GET JOIN TABLE
 
 @post_meta = []
