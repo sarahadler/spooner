@@ -7,3 +7,12 @@
 <% else %>
 	<h2>We found <%= @common.count %> recipes for you.<h2>
 <% end %>
+
+<ul class="list-unstyled">
+	<% @common.each do |recipe| %>
+	<li><a href="<%= recipe_path(recipe.id)%>"><%= recipe.title %></a></li>
+	<% end %>
+</ul>
+&nbsp;
+<p>Feelin' other flavors?</p>
+<a class="btn btn-default" href="/">Search Again</a>

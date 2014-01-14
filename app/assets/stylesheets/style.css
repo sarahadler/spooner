@@ -1,0 +1,90 @@
+body {
+	background-size:cover;
+	font-family:'museo-sans-rounded';
+	text-align:center;
+}
+
+h1,h2,h3,h4 {
+	font-family:'museo-sans-rounded';
+	font-weight:900;
+	text-transform:uppercase;
+}
+
+input.search-text {
+	width:100%;
+}
+
+button#submit {
+	width:100%;
+}
+
+.recipe-show h1 {
+	font-size:40px;
+	text-shadow: 6px 0px rgba(0,0,0,.4);
+
+}
+ 
+.recipe-show a {
+	color:white;
+}
+
+.recipe-show a:hover {
+	text-decoration: none;
+	color:#efefef;
+}
+
+.recipe-show p {
+	color:white;
+	font-weight:500;
+	font-size:20px;
+	text-shadow: 2px 2px rgba(0,0,0,.4);
+}
+
+.form-horizontal .radio {
+	position:relative;
+	bottom:15px;
+}
+
+.form-horizontal {
+	margin:50px 20px;
+}
+
+
+
+/* Extra small devices (phones, less than 768px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+ 	.recipe-show h1 {
+		font-size:90px !important;
+	}
+ 	.recipe-show p {
+		font-size:30px !important;	
+	}
+
+ }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+
+ }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

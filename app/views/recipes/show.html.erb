@@ -1,0 +1,15 @@
+<% photo_url = Joiner.find_by_recipe_id(@recipe.id).photo.url %>
+
+<style>
+	body {
+		background-image:url(<%= photo_url %>);
+	}
+</style>
+
+
+<div class="recipe-show col-md-8 col-md-offset-2">
+	<a href="<%= @recipe.url %>"><h1><%= @recipe.title %></h1></a>
+	<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <a href="<%= @recipe.url %>"><%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></a></p>
+	<button class="btn btn-default" onclick="goBack()">Go Back</button>
+</div>
+
