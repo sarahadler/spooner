@@ -82,21 +82,13 @@ end
 ###################################################### ADD JOINER/ ASSOC TABLES
 
 @post_meta.each do |entry|
-	Recipe.all.each do |recipe|
-		if entry[:post_id] == recipe.spoon_id
-			Photo.all.each do |photo|
-				if photo.spoon_id == entry[:meta_value]
-					Joiner.create({
-						recipe_id: recipe.id,
-						photo_id: photo.id,
-						})
-				end
-			end
-		end
+	if Recipe.find_by_spoon_id(entry[:post_id])
+		Joiner.create({
+			recipe_id: Recipe.find_by_spoon_id(entry[:post_id]).id,
+			photo_id: Photo.find_by_spoon_id(entry[:meta_value]).id
+			})
 	end
 end
-
-
 
 
 
