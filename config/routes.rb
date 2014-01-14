@@ -1,13 +1,11 @@
 SpoonerApp::Application.routes.draw do
 
-  devise_for :views
-
   devise_for :users
 
   root :to => "recipes#search"
 
   resources :recipes, :except => [:create, :new]
-  resources :users
+  # resources :users, :except => [:create, :new]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
