@@ -30,7 +30,7 @@ require "pry"
 # ###################################################### GET JOIN TABLE
 
 @post_meta = []
-CSV.foreach( Rails.root.join('lib','data','wp_posts.csv')) do |row|
+CSV.foreach( Rails.root.join('_test_data','wp_postmeta.csv')) do |row|
 	new_el = {}
 	new_el[:meta_id] = row[0]
 	new_el[:post_id] = row[1]
@@ -83,9 +83,9 @@ end
 
 @post_meta.each do |entry|
 	Recipe.all.each do |recipe|
-		if entry[:post_id] == recipe[:post_id]
+		if entry[:post_id] == recipe.spoon_id
 			Photo.all.each do |photo|
-				if photo[:post_id] == entry[:meta_value]
+				if photo.spoon_id == entry[:meta_value]
 					Joiner.create({
 						recipe_id: recipe.id,
 						photo_id: photo.id,
