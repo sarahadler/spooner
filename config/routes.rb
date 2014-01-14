@@ -8,6 +8,7 @@ SpoonerApp::Application.routes.draw do
 
   resources :recipes, :except => [:create, :new]
   resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

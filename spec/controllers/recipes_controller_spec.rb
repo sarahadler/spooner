@@ -9,7 +9,7 @@ describe RecipesController do
 			}
 		end
 
-		it "should translate the params into useful info"
+		it "should translate the params into useful info" do 
 			@regex.should == Regex.new('macaroni|cheese', 'i')
 		end
 	end

@@ -9,6 +9,6 @@
 	<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
 	<button class="btn btn-default" onclick="goBack()">Go Back</button>
 
-	<a class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
+	<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
 </div>
 

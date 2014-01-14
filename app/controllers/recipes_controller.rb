@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-  before_filter :authenticate_user!
-
  #        root        /                              recipes#search
  	def search
  		
