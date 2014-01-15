@@ -4,8 +4,8 @@
 		<h4>You've saved <%= @recipes.count %> recipe<% if @recipes.count > 1 %>s<% end %>.</h4>
 		<div class="row">
 			<% @recipes.each do |recipe| %>
-			<a href="<%= recipe_path(recipe) %>">
-				<div class="col-md-4 later"
+			<a class="later" href="<%= recipe_path(recipe) %>">
+				<div class="col-md-4"
 					<% if Joiner.find_by_recipe_id(recipe.id) %>
 					<% photo_url = Joiner.find_by_recipe_id(recipe.id).photo.url %>
 					style = "

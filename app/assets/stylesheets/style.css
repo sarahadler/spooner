@@ -27,7 +27,7 @@ div.container {
 
 .search {
 	margin-bottom: 350px;
-	margin-top:-75px;
+	margin-top:-50px;
 }
 
 h1,h2,h3,h4 {
@@ -152,6 +152,16 @@ a.random {
 .liked:hover {
 	background-color: #d65c85;
 }
+
+a.later {
+	color:#ffffff;
+}
+
+a.later:hover {
+	text-decoration: none;
+	color:#de3163;
+}
+
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
