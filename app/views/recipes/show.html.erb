@@ -16,7 +16,7 @@
 	<div class="col-md-8 col-md-offset-2">
 		<h1><%= @recipe.title %></h1>
 		<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
-		<a class="btn btn-default" href='<%= link_to "Back", :back %>'>Go Back</a>
+		<%= link_to "Go Back", :back, class:"btn btn-default"  %>
 		<% if user_signed_in?%>
 			<% if current_user.faves.include?(@recipe) %>
 				<a id="like" class="liked btn btn-default" href="/recipes/<%= @recipe.id %>/unlike">&hearts;</a>
