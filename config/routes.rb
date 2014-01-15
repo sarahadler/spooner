@@ -5,6 +5,12 @@ SpoonerApp::Application.routes.draw do
   root :to => "recipes#search"
 
   resources :recipes, :only => [:index, :show]
+
+  ## unnecessary but nice to have
+  devise_scope :user do
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
   # resources :users, :except => [:create, :new]
 
   # The priority is based upon order of creation:
