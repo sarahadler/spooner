@@ -16,7 +16,7 @@ body {
 div.container {
 }
 
-.show {
+.show, .saved {
 	margin-bottom:550px;
 	text-align:center;
 }
@@ -127,7 +127,6 @@ nav {
 
 .navbar a {
 	color:#ffffff;
-	margin-bottom:-10px;
 }
 
 .navbar span {

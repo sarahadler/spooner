@@ -33,7 +33,7 @@ describe "when a user tries to log in" do
 			click_link 'saved'
 		end
 		it "should show favorites" do
-			page.should have_content('Saved for Later')
+			page.should have_content('Weirdo')
 		end
 	end
 	describe "on a recipe page" do
