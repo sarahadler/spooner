@@ -1,18 +1,24 @@
-<h1>Saved for Later</h1>
-<div class="row">
-	<% @recipes.each do |recipe| %>
-	<div style="
-		<% if Joiner.find_by_recipe_id(recipe.id) %>
-		<% photo_url = Joiner.find_by_recipe_id(recipe.id).photo.url %>
-		
-		background-image:url(<%= photo_url %>);
-		-webkit-background-size:cover;
-		-moz-background-size:cover;
-		background-size:cover;
-		background-position: center;
-		}
-			<% end %>" class="col-md-4">
-		<h3><% recipe.title %></h3>
+<div class="saved">
+	<h1>Saved for Later</h1>
+	<% if @recipes.count > 0  %>
+	<div class="row">
+		<% @recipes.each do |recipe| %>
+		<div style="
+			<% if Joiner.find_by_recipe_id(recipe.id) %>
+			<% photo_url = Joiner.find_by_recipe_id(recipe.id).photo.url %>
+			
+			background-image:url(<%= photo_url %>);
+			-webkit-background-size:cover;
+			-moz-background-size:cover;
+			background-size:cover;
+			background-position: center;
+			}
+				<% end %>" class="col-md-4 later">
+			<h3><% recipe.title %></h3>
+		</div>
+		<% end %>
 	</div>
+	<% else %>
+	<p>Weirdo, you haven't saved anything yet. Go <a href="<%= root_path %>">find</a> something you like.</p>
 	<% end %>
 </div>
