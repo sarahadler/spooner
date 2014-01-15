@@ -16,10 +16,10 @@
 	<div class="col-md-8 col-md-offset-2">
 		<h1><%= @recipe.title %></h1>
 		<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
-		<a class="random btn btn-default hidden-phone" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>
 		<button class="btn btn-default" onclick="goBack()">Go Back</button>
 
 		<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
 	</div>
+			<a class="random btn btn-default hidden-phone visible-desktop" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>
 </div>
 
