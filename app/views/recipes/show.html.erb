@@ -1,14 +1,25 @@
 <% if Joiner.find_by_recipe_id(@recipe.id) %>
 	<% photo_url = Joiner.find_by_recipe_id(@recipe.id).photo.url %>
-	<style>body {background-image:url(<%= photo_url %>);}</style>
+	<style>
+	body {
+		background-image:url(<%= photo_url %>);
+		-webkit-background-size:cover;
+		-moz-background-size:cover;
+		background-size:cover;
+		background-position: center;
+		}
+	</style>
 <% end %>
 
 
-<div class="recipe-show col-md-8 col-md-offset-2">
-	<h1><%= @recipe.title %></h1>
-	<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
-	<button class="btn btn-default" onclick="goBack()">Go Back</button>
+<div class="show clearfix row"> 
+	<div class="col-md-8 col-md-offset-2">
+		<h1><%= @recipe.title %></h1>
+		<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
+		<a class="random btn btn-default hidden-phone" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>
+		<button class="btn btn-default" onclick="goBack()">Go Back</button>
 
-	<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
+		<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
+	</div>
 </div>
 

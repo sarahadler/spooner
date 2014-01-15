@@ -24,7 +24,7 @@ CSV.foreach( Rails.root.join('lib','data','wp_posts.csv')) do |row|
 	new_el = {}
 	new_el[:post_id] = row[0]
 	new_el[:post_content] = row[4]
-	new_el[:title] = row[5]
+	new_el[:title].gsub('&amp;','&') = row[5]
 	new_el[:url] = row[18]
 	new_el[:post_type] = row[20]
 	@data << new_el
