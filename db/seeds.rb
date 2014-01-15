@@ -24,7 +24,7 @@ CSV.foreach( Rails.root.join('lib','data','wp_posts.csv')) do |row|
 	new_el = {}
 	new_el[:post_id] = row[0]
 	new_el[:post_content] = row[4]
-	new_el[:title] = row[5].gsub('&amp;','&')
+	new_el[:title] = row[5]
 	new_el[:url] = row[18]
 	new_el[:post_type] = row[20]
 	@data << new_el
@@ -51,7 +51,7 @@ end
 	if entry[:post_type] == 'recipe' || entry[:post_type] == 'recipes' 
 
 ############### FIX URLs
-
+		entry[:title] = entry[:title].gsub('&amp;','&')
 		entry[:url] = entry[:url].gsub(/\d{4}\/\d{,2}\/\d{,2}/, 'recipe')
 		if entry[:url].include?('recipe') == false
 			entry[:url] = entry[:url].gsub('.com/', '.com/recipe/')
