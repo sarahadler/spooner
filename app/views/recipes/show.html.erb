@@ -16,7 +16,7 @@
 	<div class="col-md-8 col-md-offset-2">
 		<h1><%= @recipe.title %></h1>
 		<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
-		<button class="btn btn-default" onclick="goBack()">Go Back</button>
+		<a class="btn btn-default" href='<%= link_to "Back", :back %>'>Go Back</a>
 		<% if user_signed_in?%>
 			<% if current_user.faves.include?(@recipe) %>
 				<a id="like" class="liked btn btn-default" href="/recipes/<%= @recipe.id %>/unlike">&hearts;</a>
@@ -24,11 +24,13 @@
 				<a id="like" class="btn btn-default" href="/recipes/<%= @recipe.id %>/like">&hearts;</a>
 			<% end %>
 		<% end %>
-		<% if @recipe.likers.empty? == false %>
-		<p> <%= @recipe.liked_by.join(' , ') %> like this.<p>
-		<% end %>
 		<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
 	</div>
-			<a class="random btn btn-default hidden-phone visible-desktop" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>
+		<% if @recipe.likers.empty? == false %>
+		<div class="row">
+		<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like this.<p>
+		</div>
+		<% end %>
+	<a class="random btn btn-default hidden-phone visible-desktop" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>
 </div>
 

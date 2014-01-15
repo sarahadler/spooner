@@ -24,7 +24,15 @@ describe "when a user tries to log in" do
 	end
 	it "should be successful" do 
 		visit root_path
-		page.should have_content('Sign Out')
+		page.should have_content('Saved for Later')
+	end
+	describe "it should be able to view favorites" do
+		before do
+			click_button 'faves'
+		end
+		it "should show favorites" do
+			page.should have_content('Saved for Later')
+		end
 	end
 	describe "on a recipe page" do
 		before do 
