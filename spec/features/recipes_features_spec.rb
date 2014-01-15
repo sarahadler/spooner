@@ -34,6 +34,7 @@ describe "when a user tries to log in" do
 		it "should be able to like the recipe" do 
 			click_link "like"
 			@user.faves.should include Recipe.first
+			page.should have_content @user.name
 		end
 		describe "and after it refreshes" do 
 			before do

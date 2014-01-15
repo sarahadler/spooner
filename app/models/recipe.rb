@@ -44,6 +44,10 @@ class Recipe < ActiveRecord::Base
     return @recipes
   end
 
-
+  def liked_by
+    self.likers.map do |liker|
+      liker.name
+    end
+  end
 
 end

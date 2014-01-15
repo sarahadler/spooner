@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  #make sure emails are unique
+  # make sure emails are unique 
   validates_uniqueness_of :email
 
   devise :omniauthable, :omniauth_providers => [:facebook]
