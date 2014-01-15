@@ -30,7 +30,9 @@ gem 'pry'
 
 gem 'devise'
 
-gem 'elasticsearch'
+# gem 'elasticsearch' # if I want to try to add phonetic search helpers
+
+gem 'omniauth-facebook'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

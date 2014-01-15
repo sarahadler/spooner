@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Photo do
+describe Likes do
 end

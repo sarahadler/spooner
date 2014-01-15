@@ -1,11 +1,9 @@
 require 'spec_helper'
 
-
 describe "searching for ingredients" do 
 	describe "starting on the search form" do 
 		before do 
 			visit root_path
-			login_as(@user)
 		end
 		it "should take input from the user." do
 			fill_in 'ingredients', {with: 'Butternut Squash'}
@@ -22,10 +20,20 @@ describe "looking at a recipe" do
 		before do 
 			id = Recipe.all.first.id 
 			visit recipe_path(id)
-			login_as(@user)
 		end
 		it "should show that recipe's information" do
 			page.should have_content(Recipe.all.first.title)
 		end
+	end
+end
+
+describe "when a user tries to log in" do
+
+	before (:each) do
+    login_user
+  end
+	it "should be successful" do 
+		get 'index'
+		response.should be_success
 	end
 end

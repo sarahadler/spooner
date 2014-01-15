@@ -53,14 +53,11 @@ class RecipesController < ApplicationController
 	 	end
 
  end
- # edit_recipe GET    /recipes/:id/edit(.:format)    recipes#edit
  #      recipe GET    /recipes/:id(.:format)         recipes#show
  def show 
  	@recipe = Recipe.find(params[:id])
  	@random = Recipe.first(:offset => rand(Recipe.count)).id
  end
- #             PUT    /recipes/:id(.:format)         recipes#update
- #             DELETE /recipes/:id(.:format)         recipes#destroy	
 
 end
 
