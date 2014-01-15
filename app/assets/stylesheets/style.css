@@ -19,6 +19,7 @@ div.container {
 .show {
 	margin-bottom:550px;
 	text-align:center;
+
 }
 
 .index {
@@ -26,7 +27,8 @@ div.container {
 }
 
 .search {
-	margin-bottom: 200px;
+	margin-bottom: 350px;
+	margin-top:-75px;
 }
 
 h1,h2,h3,h4 {
@@ -79,7 +81,7 @@ button#submit {
 	text-transform:uppercase;
 }
 
-.alert {
+.notice {
 	color:#cc6666;
 }
 
@@ -139,12 +141,6 @@ a.random {
 	right: 50px;
 	top:300px;
 }
-
-.alert, .notice {
-	margin: 5px;
-	display:inline;
-}
-
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
