@@ -57,6 +57,10 @@ end
  	redirect_to recipe_path(@recipe)
  end
 
+#  GET      /recipes/:id/later(.:format)           recipes#later
+	def later 
+		@recipes = current_user.faves
+	end
 
 end
 

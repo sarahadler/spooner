@@ -18,17 +18,19 @@ describe "when a user tries to log in" do
 	before do
 		@user = User.create({
 			email: 'sarah.e.adler@gmail.com',
+			name: 'Sarah Adler',
 			password: 'northwestern'
 			})
 		login_as(@user)
 	end
-	it "should be successful" do 
+	it "should see their personal options" do 
 		visit root_path
-		page.should have_content('Saved for Later')
+		page.should have_content('Sarah Adler')
 	end
 	describe "it should be able to view favorites" do
 		before do
-			click_button 'faves'
+			visit root_path
+			click_link 'saved'
 		end
 		it "should show favorites" do
 			page.should have_content('Saved for Later')

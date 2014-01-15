@@ -28,7 +28,7 @@
 	</div>
 		<% if @recipe.likers.empty? == false %>
 		<div class="row">
-		<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like this.<p>
+		<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
 		</div>
 		<% end %>
 	<a class="random btn btn-default hidden-phone visible-desktop" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>
