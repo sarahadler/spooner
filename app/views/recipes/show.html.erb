@@ -17,7 +17,13 @@
 		<h1><%= @recipe.title %></h1>
 		<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
 		<button class="btn btn-default" onclick="goBack()">Go Back</button>
-
+		<% if user_signed_in?%>
+			<% if current_user.faves.include?(@recipe) %>
+				<a id="like" class="liked btn btn-default" href="/recipes/<%= @recipe.id %>/unlike">&hearts;</a>
+			<% else %>
+				<a id="like" class="btn btn-default" href="/recipes/<%= @recipe.id %>/like">&hearts;</a>
+			<% end %>
+		<% end %>
 		<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
 	</div>
 			<a class="random btn btn-default hidden-phone visible-desktop" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>

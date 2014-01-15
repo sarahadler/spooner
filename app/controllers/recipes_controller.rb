@@ -1,63 +1,62 @@
 class RecipesController < ApplicationController
+
  #        root        /                              recipes#search
- 	def search
- 		
- 	end
+ def search
+
+ end
 # 			recipes GET   /recipes(.:format)             recipes#index
-  def index
-	 	if params[:ingredients] && params[:how]
-	 		
-	 		####  MAKE PARAMS USABLE
+def index
+	if params[:ingredients] && params[:how]
 
-	 		@ingredients = params[:ingredients]
-	 		array = @ingredients.split(/,|and|&/)
-		 	answer = array.map {|answer| answer.strip}
-		
-			####  IF FILTERING BY 'AND'
-	 		if params[:how] == "and"
-				regex = answer.map { |answer| Regexp.new(answer, 'i') }	
-				@found = {}
-					regex.each do |regex|
-						@found[regex.to_s.to_sym] = []
-						Recipe.all.each do |recipe| 
-							if recipe[:ingredients] =~ regex
-								@found[regex.to_s.to_sym] << recipe
-							end
-						end
-					end
-				@common = @found.values.first
-					@found.values.each do |array| 
-						@common = @common & array
-					end
+		 		##########################################  MAKE PARAMS USABLE
+		 		ingredients = params[:ingredients]
+		 		array = ingredients.split(/,|and|&/)
+		 		query = array.map {|query| query.strip}
 
-			####  IF FILTERING BY 'OR'
+				######################################  IF FILTERING BY 'AND'
+				if params[:how] == "and"
+
+					@recipes = Recipe.search_and(query)
+
+				#####################################  IF FILTERING BY 'OR'
 
 			elsif params[:how] == "or"
-				answer = answer.join('|')
-				regex = Regexp.new(answer, 'i')
+
+				@recipes = Recipe.search_or(query)
 				
-				@common = []
-				Recipe.all.each do |recipe|
-					if recipe[:ingredients] =~ regex
-						@common << recipe
-					end
-				end
 			end
+			
+			#######################  also return ingredients	
 
-			####  RETURN RESULTS
-
-			@common
 			@ingredients = array.join(' and ')
-	 	else
-	 		redirect_to root_path
-	 	end
 
- end
+		else
+			redirect_to root_path
+		end
+	end
+
  #      recipe GET    /recipes/:id(.:format)         recipes#show
- def show 
- 	@recipe = Recipe.find(params[:id])
+def show 
+	@recipe = Recipe.find(params[:id])
  	@random = Recipe.first(:offset => rand(Recipe.count)).id
+end
+
+ #    GET      /recipes/:id/like(.:format)            recipes#like
+ def like 
+ 	@recipe = Recipe.find(params[:id])
+ 	current_user.faves << @recipe
+ 	@random = Recipe.first(:offset => rand(Recipe.count)).id
+ 	redirect_to recipe_path(@recipe)
  end
+
+ #    GET      /recipes/:id/unlike(.:format)          recipes#unlike
+ def unlike
+ 	@recipe = Recipe.find(params[:id])
+ 	current_user.faves.delete(@recipe)
+ 	@random = Recipe.first(:offset => rand(Recipe.count)).id
+ 	redirect_to recipe_path(@recipe)
+ end
+
 
 end
 

@@ -1,6 +1,6 @@
 <div class="index clearfix">
 	<h2 class="super"><%= @ingredients %>, eh?</h2>
-	<% if @common == nil || @common.count == 0 %>
+	<% if @recipes == nil || @recipes.count == 0 %>
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<h4>Sorry honey. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.<h4>
@@ -10,13 +10,13 @@
 			</div>
 		</div>
 		<% else %>
-		<% if @common.count == 1 %>
-		<h2>We found <%= @common.count %> recipe for you.<h2>
+		<% if @recipes.count == 1 %>
+		<h2>We found <%= @recipes.count %> recipe for you.<h2>
 			<% else %>
-			<h2>We found <%= @common.count %> recipes for you.<h2>
+			<h2>We found <%= @recipes.count %> recipes for you.<h2>
 				<% end %>
 				<ul class="list-unstyled">
-					<% @common.each do |recipe| %>
+					<% @recipes.each do |recipe| %>
 					<li><a href="<%= recipe_path(recipe.id)%>"><%= recipe.title %></a></li>
 					<% end %>
 				</ul>
@@ -24,7 +24,7 @@
 				&nbsp;
 				<h3>Feelin' other flavors?</h3>
 				<a class="btn btn-default search" href="/">Search Again</a>
-				<% if @common == nil || @common.count == 0 %>
+				<% if @recipes == nil || @recipes.count == 0 %>
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
 						<p class="sidenote notice">*Be sure to use commas or 'and's between stuff, please. We wanted to make sure you could ask us for "peanut butter" or "peanut and butter".</p>

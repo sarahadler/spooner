@@ -13,4 +13,37 @@ class Recipe < ActiveRecord::Base
   	ingredients
   end
 
+  def self.search_and(query)
+    regex = query.map { |query| Regexp.new(query, 'i') } 
+    @found = {}
+    regex.each do |regex|
+      @found[regex.to_s.to_sym] = []
+      all.each do |recipe| 
+        if recipe[:ingredients] =~ regex
+          @found[regex.to_s.to_sym] << recipe
+        end
+      end
+    end
+    @recipes = @found.values.first
+    @found.values.each do |array| 
+      @recipes = @recipes & array
+    end
+    return @recipes
+  end
+
+  def self.search_or(query)
+    query = query.join('|')
+    regex = Regexp.new(query, 'i')
+
+    @recipes = []
+    all.each do |recipe|
+      if recipe[:ingredients] =~ regex
+        @recipes << recipe
+      end
+    end
+    return @recipes
+  end
+
+
+
 end

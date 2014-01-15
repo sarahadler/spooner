@@ -11,6 +11,10 @@ SpoonerApp::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
+  get '/recipes/:id/like' => "recipes#like"
+
+  get '/recipes/:id/unlike' => "recipes#unlike"
+
   # resources :users, :except => [:create, :new]
 
   # The priority is based upon order of creation:
