@@ -7,10 +7,14 @@ class Recipe < ActiveRecord::Base
   has_many :likers, :through => :likes, :source => :user 
 
   def list_ingredients
-  	ingredients = self.ingredients.split(/\n|\r\n/)
-  	ingredients.shift
-  	ingredients.pop
-  	ingredients
+    if self.ingredients
+    	ingredients = self.ingredients.split(/\n|\r\n/)
+    	ingredients.shift
+    	ingredients.pop
+    	ingredients
+    else
+      []
+    end
   end
 
   def self.search_and(query)

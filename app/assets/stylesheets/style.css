@@ -1,4 +1,4 @@
-body {
+html, body {
 	font-family:'museo-sans-rounded';
 	background: #23b2a6; /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -13,11 +13,11 @@ body {
 	color:#ffffff;
 }
 
-body, html {
+html {
 	height: 100%;
 }
 
-div.container {
+body, div.container {
 	min-height: 100%;
 }
 
@@ -176,7 +176,7 @@ a.later {
 #footer {
 	position:static;
 	bottom:0px;
-	background: rgba(255,255,255,.5);
+/*	background: rgba(255,255,255,.5); */
 	width:100%;
 	padding: 15px 0px 5px;
 	color: #999999;

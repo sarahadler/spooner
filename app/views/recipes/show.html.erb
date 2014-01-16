@@ -34,15 +34,12 @@ body {
 			</div>
 		</div>
 	</div>
-		<div class="row">
-			<a class="btn btn-default random" href="<%= recipe_path(@random) %>">Randomize Me</a>
-		</div>
+	<div class="row">
+		<a class="btn btn-default random" href="<%= recipe_path(@random) %>">Randomize Me</a>
 	</div>
-</div>
-<% if @recipe.likers.empty? == false %>
-<div class="row">
-	<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
+	<% if @recipe.likers.empty? == false %>
+	<div class="row">
+		<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
 	</div>
 	<% end %>
 </div>
-
