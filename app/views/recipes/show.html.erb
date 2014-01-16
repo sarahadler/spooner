@@ -19,7 +19,7 @@ body {
 		<div class="col-md-8 col-md-offset-2">
 			<div class="row">
 				<h1><%= @recipe.title %></h1>
-				<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
+				<p><%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
 			</div>
 			<div class="row">
 				<%= link_to "Go Back", :back, class:"btn btn-default"  %>

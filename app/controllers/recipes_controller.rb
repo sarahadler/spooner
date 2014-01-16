@@ -10,7 +10,7 @@ def index
 
 		 		##########################################  MAKE PARAMS USABLE
 		 		ingredients = params[:ingredients]
-		 		array = ingredients.split(/,|and|&/)
+		 		array = ingredients.split(/,|and|&|\s/)
 		 		query = array.map {|query| query.strip}
 
 				######################################  IF FILTERING BY 'AND'

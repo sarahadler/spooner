@@ -25,7 +25,7 @@ end
 ######################################################### SPLIT POST INTO SECTIONS
 
 @recipes.each do |recipe|
-	sections = recipe[:post_content].split(/ingredients|directions/i)
+	sections = recipe[:post_content].split(/(Ingredients|Directions|caption|Instructions|What you need:|How to do it:|What to do:)/)
 	@ingredients[recipe[:post_id]] = []
 	sections.each do |section|
 		@ingredients[recipe[:post_id]] << section
@@ -33,20 +33,38 @@ end
 end
 
 ######################################################### PICK INGREDIENT SECTION(S)
+@one = {}
+@zero = {}
+@more = {}
+@missing = {}
 
-@ingredients.values.each do |array_of_sections|
-  array_of_sections.keep_if do |section|
-		section.length > 50
-	end
-	array_of_sections.keep_if do |section_of_content|
-		section_of_content.scan(/(cup|\/|spoon|shot|oz\s|¼|½|ounces|,\s\S*ed)/i).any?
-	end
-	array_of_sections.uniq
-	if array_of_sections.count > 1
-		array_of_sections.keep_if do |section_of_content|
-			section_of_content.scan(/(Prepare|<\/?li>|Crumble|Bake|Refrigerate|Mix|combine|Total Time|Prep Time|Despite|Photo|°|Microwave|preheat|Drain|When|This|The|Add|Preheat|Pre-heat|pre-heat|Place|Combine|\?)/).empty?
+
+@ingredients.each do | id, array |
+  array.each do |section|
+		if section.length > 50
 		end
-		array_of_sections.uniq
+	end
+	array.keep_if do |section|
+		section.scan(/(cup|\/|spoon|shot|oz\s|¼|½|ounces|,\s\S*ed)/i).any?
+	end
+	array.uniq
+	if array.count > 1
+		array.keep_if do |section|
+			section.scan(/(Prepare|<\/?li>|Slice\s|spoonuniversity|Now\s|attachment|Crumble\s|Cut\s|Heat\s|Bake\s|In\sa\s\S*\sbowl|Photo by \S*\s\S*|Refrigerate|Mix|combine|Photo|Total Time|Prep Time|Despite|°|Microwave|preheat|Drain|When|This|Add|Preheat|Pre-heat|pre-heat|Place|Combine)/).empty?
+		end
+		array.uniq
+	end
+	if array.count == 0
+		@zero[id] = []
+		@zero[id] << array
+		@missing[id] = []
+		@missing[id] << id
+	elsif array.count == 1
+		@one[id] = []
+		@one[id] << array
+	else
+		@more[id] = []
+		@more[id] << array
 	end
 end
 
