@@ -68,6 +68,10 @@ button#submit {
 	text-shadow: 2px 2px rgba(0,0,0,.4);
 }
 
+.show .btn {
+	margin:10px;
+}
+
 .form-horizontal {
 	margin:20px 20px;
 }
@@ -138,12 +142,6 @@ nav {
 	color:#de3163;
 }
 
-a.random {
-	position: absolute;
-	right: 50px;
-	top:300px;
-}
-
 .liked {
 	background-color: #cc3366;
 	border: #8f2447;
@@ -153,15 +151,23 @@ a.random {
 	background-color: #d65c85;
 }
 
+.likers {
+	font-size:12px;
+}
+
 a.later {
 	color:#ffffff;
+}
+
+.later div {
+	padding:20px;
+	height:125px;
 }
 
 a.later:hover {
 	text-decoration: none;
 	color:#de3163;
 }
-
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */

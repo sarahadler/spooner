@@ -1,36 +1,43 @@
 <% if Joiner.find_by_recipe_id(@recipe.id) %>
-	<% photo_url = Joiner.find_by_recipe_id(@recipe.id).photo.url %>
-	<style>
-	body {
-		background-image:url(<%= photo_url %>);
-		-webkit-background-size:cover;
-		-moz-background-size:cover;
-		background-size:cover;
-		background-position: center;
-		}
-	</style>
+<% photo_url = Joiner.find_by_recipe_id(@recipe.id).photo.url %>
+<style>
+body {
+	background-image:url(<%= photo_url %>);
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	background-size:cover;
+	background-position: center;
+}
+</style>
 <% end %>
 
 
 <div class="show clearfix row"> 
 	<div class="col-md-8 col-md-offset-2">
-		<h1><%= @recipe.title %></h1>
-		<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
-		<%= link_to "Go Back", :back, class:"btn btn-default"  %>
-		<% if user_signed_in?%>
-			<% if current_user.faves.include?(@recipe) %>
-				<a id="like" class="liked btn btn-default" href="/recipes/<%= @recipe.id %>/unlike">&hearts;</a>
-			<% else %>
-				<a id="like" class="btn btn-default" href="/recipes/<%= @recipe.id %>/like">&hearts;</a>
-			<% end %>
-		<% end %>
-		<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
-	</div>
-		<% if @recipe.likers.empty? == false %>
 		<div class="row">
-		<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
+			<h1><%= @recipe.title %></h1>
+			<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
 		</div>
-		<% end %>
-	<a class="random btn btn-default hidden-phone visible-desktop" href="<%= recipe_path(@random) %>">Randomly Serve Me</a>
+		<div class="row">
+			<%= link_to "Go Back", :back, class:"btn btn-default"  %>
+			<% if user_signed_in?%>
+			<% if current_user.faves.include?(@recipe) %>
+			<a id="like" class="liked btn btn-default" href="/recipes/<%= @recipe.id %>/unlike">&hearts;</a>
+			<% else %>
+			<a id="like" class="btn btn-default" href="/recipes/<%= @recipe.id %>/like">&hearts;</a>
+			<% end %>
+			<% end %>
+			<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
+		</div>
+		<div class="row">
+			<a class="btn btn-default random" href="<%= recipe_path(@random) %>">Randomize Me</a>
+		</div>
+	</div>
+</div>
+<% if @recipe.likers.empty? == false %>
+<div class="row">
+	<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
+	</div>
+	<% end %>
 </div>
 
