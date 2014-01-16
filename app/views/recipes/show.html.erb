@@ -14,27 +14,29 @@ body {
 </style>
 <% end %>
 
-
-<div class="show clearfix row"> 
-	<div class="col-md-8 col-md-offset-2">
-		<div class="row">
-			<h1><%= @recipe.title %></h1>
-			<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
-		</div>
-		<div class="row">
-			<%= link_to "Go Back", :back, class:"btn btn-default"  %>
-			<% if user_signed_in?%>
-			<% if current_user.faves.include?(@recipe) %>
-			<a id="like" class="liked btn btn-default" href="/recipes/<%= @recipe.id %>/unlike">&hearts;</a>
-			<% else %>
-			<a id="like" class="btn btn-default" href="/recipes/<%= @recipe.id %>/like">&hearts;</a>
-			<% end %>
-			<% end %>
-			<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
+<div class="show clearfix">
+	<div class="row"> 
+		<div class="col-md-8 col-md-offset-2">
+			<div class="row">
+				<h1><%= @recipe.title %></h1>
+				<p>It only has <%= @recipe.list_ingredients.count %> ingredients. <%= ["Go forth and prosper.", "YOLO betches.","Hit it or quit it.", "Live and let live, ya dig?"].sample %></p>
+			</div>
+			<div class="row">
+				<%= link_to "Go Back", :back, class:"btn btn-default"  %>
+				<% if user_signed_in?%>
+				<% if current_user.faves.include?(@recipe) %>
+				<a id="like" class="liked btn btn-default" href="/recipes/<%= @recipe.id %>/unlike">&hearts;</a>
+				<% else %>
+				<a id="like" class="btn btn-default" href="/recipes/<%= @recipe.id %>/like">&hearts;</a>
+				<% end %>
+				<% end %>
+				<a target="_blank" class="btn btn-default" href="<%= @recipe.url %>">Make This</a>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<a class="btn btn-default random" href="<%= recipe_path(@random) %>">Randomize Me</a>
+		<div class="row">
+			<a class="btn btn-default random" href="<%= recipe_path(@random) %>">Randomize Me</a>
+		</div>
 	</div>
 </div>
 <% if @recipe.likers.empty? == false %>
