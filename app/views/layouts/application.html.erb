@@ -6,27 +6,28 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script type="text/javascript" src="//use.typekit.net/pmb1dkw.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<script>function goBack(){window.history.back()}</script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script>function goBack(){window.history.back()}</script>
 </head>
 <body>
-
-<div class="container">
-	<nav class="navbar">
-    <a href="<%= root_path %>"><img class="home" src="<%= asset_path 'small-circle.png' %>"></a>
-    <% if user_signed_in? %>
+  <nav class="navbar">
+    <div class="container">
+      <a href="<%= root_path %>"><img class="home" src="<%= asset_path 'small-circle.png' %>"></a>
+      <% if user_signed_in? %>
       <span>Welcome <%= current_user.name %>, see what you <a id="saved" href="/recipes/<%= current_user.id %>/later">saved for later</a>.</span>
       <span><%= link_to "Sign Out", destroy_user_session_path %></span>
-    <% else %>
-     <span> <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></span>
-    <% end %>
-	</nav>
-	<span class="notice"><%= notice %></span><span class="alert"><%= alert %></span>
-	<%= yield %>
-  <div id="footer">
-    <div class="container">
-      <p class="muted credit">&copy; 2014 Spoon University </p>
+      <% else %>
+      <span> <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></span>
+      <% end %>
     </div>
+  </nav>
+  <div class="container">
+   <span class="notice"><%= notice %></span><span class="alert"><%= alert %></span>
+   <%= yield %>
+ </div>
+ <div id="footer">
+  <div class="container">
+    <p class="muted credit">&copy; 2014 Spoon University </p>
   </div>
 </div>
 

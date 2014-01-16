@@ -6,15 +6,14 @@
 			<h4>Sorry honey. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.<h4>
 				<ul class="list-unstyled">
 					<li><a href="/recipes?ingredients=bacon+and+sugar&how=and">Bacon and Sugar (together!)</a></li>
+					<li><a href="/recipes?ingredients=cereal+and+butter&how=and">Cereal and Butter</a></li>
+					<li><a href="/recipes?ingredients=ramen&how=and">Ramen</a></li>
+					<li><a href="/recipes?ingredients=cilantro+and+lime&how=and">Cilantro and Lime</a></li>
 				</ul>
 			</div>
 		</div>
 		<% else %>
-		<% if @recipes.count == 1 %>
-		<h2>We found <%= @recipes.count %> recipe for you.<h2>
-			<% else %>
-			<h2>We found <%= @recipes.count %> recipes for you.<h2>
-				<% end %>
+		<h3>We found <%= @recipes.count %> recipe<% if @recipes.count > 1 %>s<% end %> for you.<h3>
 				<ul class="list-unstyled">
 					<% @recipes.each do |recipe| %>
 					<li><a href="<%= recipe_path(recipe.id)%>"><%= recipe.title %></a></li>

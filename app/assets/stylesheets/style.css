@@ -13,20 +13,28 @@ body {
 	color:#ffffff;
 }
 
-div.container {
+body, html {
+	min-height: 100%;
 }
 
-.show, .saved {
-	margin-bottom:550px;
+div.container {
+	min-height: 100%;
+}
+
+a:hover {
+	text-decoration:none;
+	color:#de3163;
+}
+
+a {
+	color: #ffffff;
+}
+
+.show, .saved, .later {
 	text-align:center;
 }
 
-.index {
-	margin-bottom: 450px;
-}
-
 .search {
-	margin-bottom: 350px;
 	margin-top:-50px;
 }
 
@@ -58,7 +66,7 @@ button#submit {
 .show h1 {
 	font-size:40px;
 	text-shadow: 6px 0px rgba(0,0,0,.4);
-	color:#ffffff;
+	color:#efefef;
 }
 
 .show p {
@@ -66,6 +74,10 @@ button#submit {
 	font-weight:500;
 	font-size:20px;
 	text-shadow: 2px 2px rgba(0,0,0,.4);
+}
+
+.saved a {
+	color:#ffffff;
 }
 
 .show .btn {
@@ -93,21 +105,15 @@ button#submit {
 
 .index {
 	text-align:center;
-	color:#cccccc;
+	color:#ffffff;
 	}
 
 .index .list-unstyled a {
-	color: #eaeaea;
 	display:block;
 	margin: 25px 0px;
 	text-shadow: 2px 2px rgba(0,0,0,.4);
-
 }
 
-.index .list-unstyled a:hover {
-	text-decoration: none;
-	color:#de3163;
-}
 
 img#logo {
 	width:70%;
@@ -137,11 +143,6 @@ nav {
 	padding: 0px 15px;
 }
 
-.navbar a:hover {
-	text-decoration: none;
-	color:#de3163;
-}
-
 .liked {
 	background-color: #cc3366;
 	border: #8f2447;
@@ -168,12 +169,18 @@ a.later {
 	padding:15px;
 }
 
-a.later:hover {
-	text-decoration: none;
-}
-
 .later div:hover {
 	background-color:rgba(0,0,0,.2);
+}
+
+#footer {
+	position:static;
+	bottom:0px;
+	background: rgba(255,255,255,.5);
+	width:100%;
+	padding: 15px 0px 5px;
+	color: #999999;
+	text-align:center;
 }
 
 /* Extra small devices (phones, less than 768px) */
