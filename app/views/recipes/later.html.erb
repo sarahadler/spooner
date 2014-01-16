@@ -4,7 +4,7 @@
 		<h4>You've saved <%= @recipes.count %> recipe<% if @recipes.count > 1 %>s<% end %>.</h4>
 		<div class="row">
 			<% @recipes.each do |recipe| %>
-			<a class="later col-sm-4" href="<%= recipe_path(recipe) %>" <% if Joiner.find_by_recipe_id(recipe.id) %>
+			<a class="later col-sm-4" target="_blank" href="<%= recipe.url %>" <% if Joiner.find_by_recipe_id(recipe.id) %>
 					<% photo_url = Joiner.find_by_recipe_id(recipe.id).photo.url %>
 					style = "
 						background-image:url(<%= photo_url %>);
@@ -23,5 +23,5 @@
 <% else %>
 <p>Weirdo, you haven't saved anything yet.</p>
 <% end %>
-<p>Go <a href="<%= root_path %>">find</a> some more stuff you like.</p>
+<h4>Go <a href="<%= root_path %>">find</a> some more stuff you like.</h4>
 </div>
