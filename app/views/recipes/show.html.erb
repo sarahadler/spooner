@@ -39,7 +39,7 @@ body {
 	</div>
 	<% if @recipe.likers.empty? == false %>
 	<div class="row">
-		<p class="likers"> <%= @recipe.liked_by.join(' , ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
+		<p class="likers"> <%= @recipe.liked_by.join(', ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
 	</div>
 	<% end %>
 </div>
