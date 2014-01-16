@@ -157,6 +157,7 @@ nav {
 
 a.later {
 	color:#ffffff;
+	display:block;
 }
 
 .later div {
@@ -166,7 +167,10 @@ a.later {
 
 a.later:hover {
 	text-decoration: none;
-	color:#de3163;
+}
+
+.later div:hover {
+	background-color:rgba(0,0,0,.2);
 }
 
 /* Extra small devices (phones, less than 768px) */
