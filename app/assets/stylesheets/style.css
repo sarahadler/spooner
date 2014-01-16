@@ -49,6 +49,8 @@ h1,h2,h3,h4 {
 .btn {
 	font-weight:900;
 	text-transform:uppercase;
+	font-size:17px;
+	padding:12px 17px;
 }
 
 h1.super {
@@ -70,7 +72,7 @@ button#submit {
 
 .show h1 {
 	font-size:40px;
-	text-shadow: 6px 0px rgba(0,0,0,.4);
+	text-shadow: 4px 4px rgba(0,0,0,.7);
 	color:#efefef;
 }
 
@@ -78,7 +80,7 @@ button#submit {
 	color:white;
 	font-weight:500;
 	font-size:20px;
-	text-shadow: 2px 2px rgba(0,0,0,.4);
+	text-shadow: 2px 2px rgba(0,0,0,.7);
 }
 
 .saved a {
@@ -136,7 +138,7 @@ input.search-text {
 
 nav {
 	padding:15px;
-	text-shadow: 1px 2px rgba(0,0,0,.4);
+	text-shadow: 1px 1px rgba(0,0,0,.4);
 	font-weight:700;
 }
 
@@ -157,8 +159,8 @@ nav {
 	background-color: #d65c85;
 }
 
-.likers {
-	font-size:14px;
+.show .likers p {
+	font-size:17px;
 	font-family:'museo-slab';
 }
 
@@ -207,11 +209,11 @@ a.pink:hover {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
  	.show h1 {
-		font-size:90px !important;
+		font-size:90px;
 	}
 
  	.show p {
-		font-size:30px !important;	
+		font-size:30px;	
 	}
 
 	h1.super {

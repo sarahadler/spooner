@@ -38,14 +38,14 @@ def index
  #      recipe GET    /recipes/:id(.:format)         recipes#show
 def show 
 	@recipe = Recipe.find(params[:id])
- 	@random = Recipe.first(:offset => rand(Recipe.count)).id
+ 	@random = Recipe.all.shuffle.first
 end
 
  #    GET      /recipes/:id/like(.:format)            recipes#like
  def like 
  	@recipe = Recipe.find(params[:id])
  	current_user.faves << @recipe
- 	@random = Recipe.first(:offset => rand(Recipe.count)).id
+ 	@random = Recipe.all.shuffle.first
  	redirect_to recipe_path(@recipe)
  end
 

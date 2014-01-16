@@ -38,8 +38,9 @@ body {
 		<a class="btn btn-default random" href="<%= recipe_path(@random) %>">Randomize Me</a>
 	</div>
 	<% if @recipe.likers.empty? == false %>
-	<div class="row">
-		<p class="likers"> <%= @recipe.liked_by.join(', ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
+	<div class="likers row">
+		<p> <%= @recipe.liked_by.join(', ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
+			<% @recipe.liked_by_photos.each do |image| %> <img src="<%= image %>"> <% end %>
 	</div>
 	<% end %>
 </div>

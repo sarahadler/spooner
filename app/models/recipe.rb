@@ -54,4 +54,10 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def liked_by_photos
+    self.likers.map do |liker|
+      liker.image
+    end
+  end
+
 end
