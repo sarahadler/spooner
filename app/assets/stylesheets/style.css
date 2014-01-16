@@ -144,10 +144,6 @@ nav {
 	font-weight:700;
 }
 
-.navbar span {
-	padding: 0px 15px;
-}
-
 .liked {
 	background-color: #cc3366;
 	border: #8f2447;
@@ -201,6 +197,10 @@ a.pink:hover {
 	color:#ffffff;
 }
 
+#goodlooking {
+	font-size:24px;
+}
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 
@@ -233,6 +233,9 @@ a.pink:hover {
 
 	a.later {
 		height:180px;
+	}
+	#goodlooking {
+		font-size:60px;
 	}
  }
 

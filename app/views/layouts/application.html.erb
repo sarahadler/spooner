@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9;">
   <script type="text/javascript" src="//use.typekit.net/pmb1dkw.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <script>function goBack(){window.history.back()}</script>
@@ -18,12 +18,11 @@
       <span class="hidden-xs"><%= ['Yo','Hai','Sup','Howdy'].sample %> <%= current_user.name %> — see what you <a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">saved for later.</a></span>
       <span><%= link_to "Sign Out", destroy_user_session_path, class:"pull-right" %></span>
       <% else %>
-      <span> <%= link_to "Sign in with Facebook to save some for later.", user_omniauth_authorize_path(:facebook) %></span>
+      <span><a href="/users/auth/facebook">Sign in with Facebook <span class="hidden-xs">to save some for later.</span></a></span>
       <% end %>
     </div>
   </nav>
   <div class="container">
-   <span class="notice"><%= notice %></span><span class="alert"><%= alert %></span>
    <%= yield %>
  </div>
  <div id="footer">
