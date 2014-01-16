@@ -1,3 +1,6 @@
+<% if @recipe == nil %>
+<% redirect_to '/oops' %>
+<% end %>
 <% if Joiner.find_by_recipe_id(@recipe.id) %>
 <% photo_url = Joiner.find_by_recipe_id(@recipe.id).photo.url %>
 <style>

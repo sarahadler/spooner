@@ -17,6 +17,8 @@ SpoonerApp::Application.routes.draw do
 
   get '/recipes/:id/later' => "recipes#later"
 
+  get '/oops' => "recipes#oops"
+
   # resources :users, :except => [:create, :new]
 
   # The priority is based upon order of creation:

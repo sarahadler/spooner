@@ -61,6 +61,10 @@ end
 	def later 
 		@recipes = current_user.faves
 	end
+#   oops GET      /oops(.:format)                        recipes#oops
+	def oops
+		
+	end
 
 end
 
