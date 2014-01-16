@@ -80,8 +80,10 @@ button#submit {
 	color:white;
 	font-weight:500;
 	font-size:20px;
-	text-shadow: 2px 2px rgba(0,0,0,.7);
+	text-shadow: 1px 1px rgba(0,0,0,.7);
 }
+
+
 
 .saved a {
 	color:#ffffff;
@@ -140,10 +142,6 @@ nav {
 	padding:15px;
 	text-shadow: 1px 1px rgba(0,0,0,.4);
 	font-weight:700;
-}
-
-.navbar a {
-	color:#ffffff;
 }
 
 .navbar span {
@@ -229,6 +227,13 @@ a.pink:hover {
 		margin: 0 25%;
 	}
 
+	span.hidden-xs {
+		display:inline !important;
+	}
+
+	a.later {
+		height:180px;
+	}
  }
 
 /* Medium devices (desktops, 992px and up) */
@@ -237,12 +242,16 @@ a.pink:hover {
 		width:40%;
 		margin: 0 30%;
 	}
+
  }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
 	h1.super {
 		font-size: 120px;
+	}
+	a.later {
+		height:150px;
 	}
 
  }

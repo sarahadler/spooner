@@ -14,8 +14,8 @@
     <div class="container">
       <a href="<%= root_path %>"><img class="home" src="<%= asset_path 'small-circle.png' %>"></a>
       <% if user_signed_in? %>
-      <span><%= ['Yo','Hai','Sup','Howdy'].sample %> <%= current_user.name %> — see what you <a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">saved for later.</a></span>
-      <span><%= link_to "Sign Out", destroy_user_session_path %></span>
+      <span class="hidden-xs"><%= ['Yo','Hai','Sup','Howdy'].sample %> <%= current_user.name %> — see what you <a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">saved for later.</a></span>
+      <span><%= link_to "Sign Out", destroy_user_session_path, class:"pull-right" %></span>
       <% else %>
       <span> <%= link_to "Sign in with Facebook to save some for later.", user_omniauth_authorize_path(:facebook) %></span>
       <% end %>

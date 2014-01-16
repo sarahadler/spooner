@@ -39,8 +39,10 @@ body {
 	</div>
 	<% if @recipe.likers.empty? == false %>
 	<div class="likers row">
-		<p> <%= @recipe.liked_by.join(', ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
-			<% @recipe.liked_by_photos.each do |image| %> <img src="<%= image %>"> <% end %>
+		<div class="col-md-6 col-md-offset-3">
+				<p> <%= @recipe.liked_by.join(', ') %> like<% if @recipe.likers.count == 1 %>s<% end %> this.<p>
+				<% @recipe.liked_by_photos.each do |image| %> <img src="<%= image %>"> <% end %>
+			</div>
 	</div>
 	<% end %>
 </div>
