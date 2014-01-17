@@ -19,11 +19,11 @@
       <a class="col-xs-1" href="<%= root_path %>"><img class="home" src="<%= asset_path 'small-circle.png' %>"></a>
       <% if user_signed_in? %>
       <span class="col-xs-7 hidden-xs"><%= ['Yo','Hai','Sup','Howdy'].sample %> <%= current_user.name %> — see what you <a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">saved for later.</a></span>
-      <span class="visible-xs col-xs-1 add-space"><a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">&hearts;</a></span>
+      <span class="visible-xs col-xs-5 add-space"><a class="pink btn btn-default btn-xs" id="saved" href="/recipes/<%= current_user.id %>/later">&hearts;</a></span>
       <span class="col-xs-4"><%= link_to "Sign Out", destroy_user_session_path, class:"pull-right" %>
       </span>
       <% else %>
-      <span class="col-xs-7"><a href="/users/auth/facebook">Sign in with Facebook <span class="hidden-xs">to save some for later.</span></a></span>
+      <span class="col-xs-10"><a href="/users/auth/facebook">Sign in with Facebook <span class="hidden-xs">to save some for later.</span></a></span>
       <% end %>
     </div>
     </div>
