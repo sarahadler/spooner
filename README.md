@@ -10,17 +10,17 @@ Let's Spoon integrates Facebook signin to allow users to save recipes for later,
 
 The app was designed to gamify the experience of searching for recipes, making the process quick, visually appealling and social across all devices.
 
-![search](http://lets-spoon.herokuapp.com/assets/search.png)
+![search](app/assets/images/search.png)
 
-![mobile](http://lets-spoon.herokuapp.com/assets/mobile.png)
+![mobile](app/assets/images/mobile.png)
 
-![mac](http://lets-spoon.herokuapp.com/assets/mac.png)
+![mac](app/assets/images/mac.png)
 
-![pizza](http://lets-spoon.herokuapp.com/assets/pizza.png)
+![pizza](app/assets/images/pizza.png)
 
-![candysushi](http://lets-spoon.herokuapp.com/assets/candysushi.png)
+![candysushi](app/assets/images/candysushi.png)
 
-![faves](http://lets-spoon.herokuapp.com/assets/faves.png)
+![faves](app/assets/images/faves.png)
 
 The most challenging aspects of the back end were parsing the database and selecting the ingredients lists out of the post content, to allow the user to search only the ingredients list and not words outside of it that may confuse the results (e.g. a post about grilled cheese where the intro says, 'Wouldn't this go great with tomato soup?'). Then, allowing the user to search by both 'and' and 'or' was also challenging.
 
