@@ -14,11 +14,11 @@ The app was designed to gamify the experience of searching for recipes, making t
 
 ![mobile](app/assets/images/mobile.png)
 
-![mac](app/assets/images/mac.png)
-
 ![pizza](app/assets/images/pizza.png)
 
 ![candysushi](app/assets/images/candysushi.png)
+
+![mac](app/assets/images/mac.png)
 
 ![faves](app/assets/images/faves.png)
 
