@@ -11,6 +11,7 @@ def index
 		 		##########################################  MAKE PARAMS USABLE
 		 		ingredients = params[:ingredients]
 		 		array = ingredients.split(/,|and|&|\s/)
+		 		array.delete('')
 		 		query = array.map {|query| query.strip}
 
 				######################################  IF FILTERING BY 'AND'
