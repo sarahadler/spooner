@@ -1,6 +1,6 @@
 # Let's Spoon
 
-![Spoon Icon](http://lets-spoon.herokuapp.com/assets/logo_150.png)
+![Spoon Icon](app/assets/images/logo_150.png)
 
 Let's Spoon lets you pick recipes by ingredients — you can select multiple things you want to pair together, or ingredients you'd use separately for a wider search. It pulls from <http://spoonuniversity.com> and makes it fun, easy and pretty to search through the all we offer. Plus, you can use the Randomizer to scroll through beautiful, full-screen photos endlessly… because everyone loves food porn.
 
