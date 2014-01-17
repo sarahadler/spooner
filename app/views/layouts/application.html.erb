@@ -6,6 +6,8 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=0.9;">
+  <meta property="og:title" content="Hey Good Looking: What's Cooking?" />
+  <meta property="og:image" content="<%= asset_path 'logo_circle.png' %>" />
   <script type="text/javascript" src="//use.typekit.net/pmb1dkw.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <script>function goBack(){window.history.back()}</script>
@@ -13,13 +15,16 @@
 <body>
   <nav class="navbar">
     <div class="container">
-      <a href="<%= root_path %>"><img class="home" src="<%= asset_path 'small-circle.png' %>"></a>
+      <div class="row">
+      <a class="col-xs-1" href="<%= root_path %>"><img class="home" src="<%= asset_path 'small-circle.png' %>"></a>
       <% if user_signed_in? %>
-      <span class="hidden-xs"><%= ['Yo','Hai','Sup','Howdy'].sample %> <%= current_user.name %> — see what you <a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">saved for later.</a></span>
-      <span><%= link_to "Sign Out", destroy_user_session_path, class:"pull-right" %></span>
+      <span class="col-xs-7 hidden-xs"><%= ['Yo','Hai','Sup','Howdy'].sample %> <%= current_user.name %> — see what you <a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">saved for later.</a></span>
+      <span class="visible-xs col-xs-1 add-space"><a class="pink" id="saved" href="/recipes/<%= current_user.id %>/later">&hearts;</a></span>
+      <span class="col-xs-4""><%= link_to "Sign Out", destroy_user_session_path, class:"pull-right" %></span>
       <% else %>
       <span><a href="/users/auth/facebook">Sign in with Facebook <span class="hidden-xs">to save some for later.</span></a></span>
       <% end %>
+    </div>
     </div>
   </nav>
   <div class="container">
