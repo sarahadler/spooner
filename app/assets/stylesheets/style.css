@@ -136,18 +136,6 @@ button#submit {
 	color:#ffffff;
 	}
 
-.selected {
-	background-color: #999999;
-	color: #cccccc;
-	border: #666666;
-}
-
-.selected:hover {
-	background-color: #999999;
-	color: #cccccc;
-	border: #666666;
-}
-
 .index .list-unstyled a {
 	display:block;
 	margin: 25px 0px;

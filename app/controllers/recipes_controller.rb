@@ -14,11 +14,11 @@ def index
 
 	 		if params[:how] == 'all'
 
-			@all = Recipe.search_and(@query)
+			@all = Recipe.search_all(@query)
 
 			elsif params[:how] == 'any'
 
-			@any = Recipe.search_or(@query)
+			@any = Recipe.search_any(@query)
 
 			end
 		@ingredients = params[:ingredients]

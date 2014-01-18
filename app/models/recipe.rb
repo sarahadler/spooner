@@ -17,7 +17,7 @@ class Recipe < ActiveRecord::Base
     end
   end
 
-  def self.search_and(query)
+  def self.search_all(query)
     regex = query.map { |query| Regexp.new(query, 'i') } 
     @found = {}
     regex.each do |regex|
@@ -28,31 +28,31 @@ class Recipe < ActiveRecord::Base
         end
       end
     end
-    @and = @found.values.first
+    @all = @found.values.first
     @found.values.each do |array| 
-      @and = @and & array
+      @all = @all & array
     end
-    return @and
+    return @all
   end
 
-  def self.search_or(query)
+  def self.search_any(query)
     query = query.join('|')
     regex = Regexp.new(query, 'i')
 
-    @or = []
+    any = []
     all.each do |recipe|
       if recipe[:ingredients] =~ regex
-        @or << recipe
+        any << recipe
       end
     end
-    return @or
+    return any
   end
 
   def self.make_searchable(params)
-    if params.match(/,| and | or /)
-      array = params.split(/,| and | or |&/i)
+    if params.match(/,| all | or /)
+      array = params.split(/,| all | or |&/i)
     else
-      array = params.split(/ and | or |&|\s/i)
+      array = params.split(/ all | or |&|\s/i)
     end
     array.delete('')
     query = array.map do |query| 
@@ -71,5 +71,15 @@ class Recipe < ActiveRecord::Base
       liker.image
     end
   end
-
 end
+
+  # def split_into_links 
+  #   array = self.title.split
+  #   with_links = array.each do |word|
+  #     unless word == 'of' || word == 'all' || word == 'the' || word == 'simple' || word == 'from'
+  #       with_link = "<a href='/recipes/search/any?ingredients=#{word}'>word</a>"
+  #       array.gsub(word, with_link)
+  #     end
+  #   end
+  #   with_links.join(' ')
+  # end

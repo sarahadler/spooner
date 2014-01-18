@@ -7,11 +7,11 @@
 	<% end %>
 <% if @query.count > 1 %>
 	<div class="row">
-		<div class="col-md-3 col-md-offset-3">
-			<a class="btn btn-default <% if @any %> selected <% end %> pull-right" href="/recipes/search/any?ingredients=<%= @ingredients %>">SHOW RECIPES WITH <span class="super">ANY</span></a>
+		<div class="col-xs-3 col-xs-offset-3">
+			<p> <span class="hidden-xs">SHOW RECIPES WITH</span><br> <a class="btn  btn-default btn-lg <% if @any %> disabled<% end %>" href="/recipes/search/any?ingredients=<%= @ingredients %>">ANY</a><br><span class="hidden-xs">OF THESE INGREDIENTS AT ALL.</span><p>
 		</div>
-		<div class="col-md-3">
-			<a class="btn btn-default <% if @all %> selected <% end %> pull-left" href="/recipes/search/all?ingredients=<%= @ingredients %>">SHOW RECIPES WITH <span class="super">all</span></a>
+		<div class="col-xs-3">
+			<p><span class="hidden-xs">SHOW RECIPES WITH</span><br> <a class="btn btn-default btn-lg <% if @all %> disabled <% end %>" href="/recipes/search/all?ingredients=<%= @ingredients %>">all</a><br><span class="hidden-xs">OF THESE INGREDIENTS TOGETHER.</span></p>
 		</div>
 <% end %>
 	</div>
