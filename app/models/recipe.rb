@@ -49,7 +49,7 @@ class Recipe < ActiveRecord::Base
   end
 
   def self.make_searchable(params)
-    if params.include?(',')
+    if params.match(/,| and | or /)
       array = params.split(/,| and | or |&/i)
     else
       array = params.split(/ and | or |&|\s/i)
