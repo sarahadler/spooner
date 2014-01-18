@@ -10,9 +10,11 @@ def index
 
 		 		##########################################  MAKE PARAMS USABLE
 		 		ingredients = params[:ingredients]
-		 		array = ingredients.split(/,|and|&|\s/)
+		 		array = ingredients.split(/,| and | or |&|\s/i)
 		 		array.delete('')
-		 		query = array.map {|query| query.strip}
+		 		query = array.map do |query| 
+		 			query.strip.chomp('s')
+		 		end
 
 				######################################  IF FILTERING BY 'AND'
 				if params[:how] == "and"
@@ -29,7 +31,7 @@ def index
 			
 			#######################  also return ingredients	
 
-			@ingredients = array.join(' and ')
+			@ingredients = params[:ingredients]
 
 		else
 			redirect_to root_path
