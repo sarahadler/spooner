@@ -1,3 +1,0 @@
-== This is Spooner
-
-Spooner helps users decide what to make for dinner by showing recipes from Spoon University, according to certain ingredients.

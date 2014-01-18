@@ -1,29 +1,46 @@
-<h1><%= @ingredients %>, eh?</h1>
-<% if @common == nil || @common.count == 0 %>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<h4>Sorry honey. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.<h4>
-		</div>
-	</div>
-<% else %>
-	<% if @common.count == 1 %>
-		<h2>We found <%= @common.count %> recipe for you.<h2>
-	<% else %>
-		<h2>We found <%= @common.count %> recipes for you.<h2>
-		<ul class="list-unstyled">
-			<% @common.each do |recipe| %>
-			<li><a href="<%= recipe_path(recipe.id)%>"><%= recipe.title %></a></li>
-			<% end %>
-		</ul>
+<div class="index clearfix">
+	<h1 class="super"><%= @ingredients %>, eh?</h1>
+	<% if @any %>
+	<% recipes = @any %>
+	<% elsif @both %>
+	<% recipes = @both %>
 	<% end %>
-<% end %>
-&nbsp;
-<h3>Feelin' other flavors?</h3>
-<a class="btn btn-default search" href="/">Search Again</a>
-<% if @common == nil || @common.count == 0 %>
+<% if @query.count > 1 %>
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<p class="sidenote alert">*Be sure to use commas or 'and's between stuff, please. We wanted to make sure you could ask us for a "bell pepper" and "bell and pepper".</p>
+		<div class="col-md-3 col-md-offset-3">
+			<a class="btn btn-default <% if @any %> selected <% end %> pull-right" href="/recipes/search/any?ingredients=<%= @ingredients %>">SHOW RECIPES WITH <span class="super">ANY</span></a>
+		</div>
+		<div class="col-md-3">
+			<a class="btn btn-default <% if @both %> selected <% end %> pull-left" href="/recipes/search/both?ingredients=<%= @ingredients %>">SHOW RECIPES WITH <span class="super">BOTH</span></a>
+		</div>
+<% end %>
+	</div>
+	<div class="row ">
+		<div class="col-md-8 col-md-offset-2 recipe-count">
+			<h3 class="skinny">We found <strong><%= recipes.count %></strong> recipe<% if recipes.count != 1 %>s<% end %> for you.</h3>
 		</div>
 	</div>
-<% end %> 
+<% if recipes.count > 0 %>
+	<ul class="list-unstyled super">
+		<% recipes.each do |recipe| %>
+		<li><a href="<%= recipe_path(recipe.id)%>"><%= recipe.title %></a></li>
+		<% end %>
+	</ul>
+<% else %>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3 class="skinny">Sorry honey. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.</h3>
+				<ul class="list-unstyled super">
+					<li><a href="/recipes/search/both?ingredients=bacon%20and%20sugar">Bacon and Sugar (together!)</a></li>
+					<li><a href="/recipes/search/both?ingredients=cereal%20and%20butter">Cereal and Butter</a></li>
+					<li><a href="/recipes/search/any?ingredients=ramen">Ramen</a></li>
+					<li><a href="/recipes/search/any?ingredients=cilantro,%20lime,%20pesto">Cilantro, Lime or Pesto</a></li>
+				</ul>
+			</div>
+		</div>
+<% end %>
+
+			&nbsp;
+			<h3>Feelin' other flavors?</h3>
+			<a class="btn btn-default search" href="/">Search Again</a>
+		</div>

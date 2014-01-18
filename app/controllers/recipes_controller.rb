@@ -1,35 +1,63 @@
 class RecipesController < ApplicationController
 
  #        root        /                              recipes#search
- 	def search
- 		
- 	end
+ def search
+
+ end
 # 			recipes GET   /recipes(.:format)             recipes#index
-  def index
-	 	if params[:ingredients]
-	 		
-	 		####  MAKE PARAMS USABLE
 
+def index
+	if params[:ingredients] && params[:how]
 
+	 		##########################################  MAKE PARAMS USABLE
+	 		@query = Recipe.make_searchable(params[:ingredients])
 
-			####  RETURN RESULTS
+	 		if params[:how] == 'both'
 
-			@or
-			@and
-			binding.pry
-			@ingredients = array.join(' and ')
-	 	else
+			@both = Recipe.search_and(@query)
+
+			elsif params[:how] == 'any'
+
+			@any = Recipe.search_or(@query)
+
+			end
+		@ingredients = params[:ingredients]
+	 else
 	 		redirect_to root_path
-	 	end
+	 end
+end
 
- end
- # edit_recipe GET    /recipes/:id/edit(.:format)    recipes#edit
+
  #      recipe GET    /recipes/:id(.:format)         recipes#show
- def show 
+def show 
+	@recipe = Recipe.find(params[:id])
+ 	@random = Recipe.all.shuffle.first
+end
+
+ #    GET      /recipes/:id/like(.:format)            recipes#like
+ def like 
  	@recipe = Recipe.find(params[:id])
+ 	current_user.faves << @recipe
+ 	@random = Recipe.all.shuffle.first
+ 	redirect_to recipe_path(@recipe)
  end
- #             PUT    /recipes/:id(.:format)         recipes#update
- #             DELETE /recipes/:id(.:format)         recipes#destroy	
+
+ #    GET      /recipes/:id/unlike(.:format)          recipes#unlike
+ def unlike
+ 	@recipe = Recipe.find(params[:id])
+ 	current_user.faves.delete(@recipe)
+ 	@random = Recipe.first(:offset => rand(Recipe.count)).id
+ 	redirect_to recipe_path(@recipe)
+ end
+
+#  GET      /recipes/:id/later(.:format)           recipes#later
+	def later 
+		@recipes = current_user.faves
+	end
+#   oops GET      /oops(.:format)                        recipes#oops
+	def oops
+		
+	end
 
 end
 

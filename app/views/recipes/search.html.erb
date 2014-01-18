@@ -1,12 +1,17 @@
-<div class="col-md-8 col-md-offset-2">
-	<h1>Hey toots, what's cooking in your kitchen tonight?</h1>
-	<form class="form-horizontal" role="form" action="<%= recipes_path %>" method="get">
-		<div class="form-group">
-			<input class="search-text form-control" type="text" name="ingredients" placeholder="In my kitchen, I have..." autocomplete="on">
-		</div>
-		<div class="col-md-8 col-md-offset-2">
-			<button class="btn-lg btn btn-default" type="submit" id="submit">Let's Spoon</button>
-		</div>
-	</form>
-</div>
 
+<div class="search clearfix">
+	<div class="col-md-8 col-md-offset-2">
+		<a href="http://spoonuniversity.com"><img id="logo" src="<%= asset_path 'logo.png' %>"></a>
+		<h1 id="goodlooking">Hey good looking,</h1>
+		<h1 class="super">What's cooking?</h1>
+		<form class="form-horizontal" role="form" action="recipes/search/any" method="get">
+			<div class="form-group">
+				<label class="sr-only" for="ingredients">Ingredients</label>
+				<input class="search-text form-control" type="text" name="ingredients" placeholder="In my kitchen, I have..." autocomplete="off">
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<button class="btn-lg btn btn-default" type="submit" id="submit">Let's Spoon</button>
+			</div>
+		</form>
+	</div>
+</div>

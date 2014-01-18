@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SpoonerApp</title>
+  <title>Let's Spoon</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=0.9;">
+  <meta property="og:title" content="Hey Good Looking: What's Cooking?" />
+  <meta property="og:image" content="<%= asset_path 'logo_circle.png' %>" />
   <script type="text/javascript" src="//use.typekit.net/pmb1dkw.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<script>function goBack(){window.history.back()}</script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script>function goBack(){window.history.back()}</script>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-2">
+        <a href="<%= root_path %>"><img class="home" src="<%= asset_path 'spoon-logo.png' %>"></a>
+        </div>
+        <% if user_signed_in? %>
+        <div class="col-xs-6">
+          <span class="hidden-xs add-space"><%= ['Yo','Hai','Sup','Howdy'].sample %> <%= current_user.name %>!</span>
+          <span class="hidden-xs"><a class="btn btn-sm btn-default pink" id="saved" href="/recipes/<%= current_user.id %>/later">See your saves</a></span>
+          <span class="visible-xs"><a class="pink btn btn-default btn-sm" id="saved" href="/recipes/<%= current_user.id %>/later">&hearts;</a></span>
+        </div>
+        <div class="col-xs-4">
+          <a href="<%= destroy_user_session_path %>" class="pull-right btn btn-sm btn-default pink">Sign Out</a>
+        </div>
+        <% else %>
+        <span class="col-xs-10"><a href="/users/auth/facebook">Sign in with Facebook <span class="hidden-xs">to save some for later.</span></a></span>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+   <%= yield %>
+ </div>
+ <div id="footer">
+  <div class="container">
 
-<div class="container">
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	<%= yield %>
+    <p class="muted credit">&copy; 2014 Spoon University </p>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-related="SpoonUniversity" data-hashtags="whatscookinggoodlooking">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </div>
 </div>
 
 </body>

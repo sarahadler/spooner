@@ -1,11 +1,29 @@
 SpoonerApp::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => "recipes#search"
 
-  resources :recipes, :except => [:create, :new]
-  resources :users
+  resources :recipes, :only => [:index, :show]
+
+  ## unnecessary but nice to have
+  devise_scope :user do
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
+  get '/recipes/search/:how' => "recipes#index"
+
+  get '/recipes/:id/like' => "recipes#like"
+
+  get '/recipes/:id/unlike' => "recipes#unlike"
+
+  get '/recipes/:id/later' => "recipes#later"
+
+  get '/oops' => "recipes#oops"
+
+
+  # resources :users, :except => [:create, :new]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

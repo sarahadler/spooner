@@ -1,0 +1,27 @@
+<div class="saved">
+	<h1 class="super">Better Late than Never</h1>
+	<% if @recipes.count > 0  %>
+		<h4>You've saved <%= @recipes.count %> recipe<% if @recipes.count > 1 %>s<% end %>.</h4>
+		<div class="row">
+			<% @recipes.each do |recipe| %>
+			<a class="later col-sm-4" target="_blank" href="<%= recipe.url %>" <% if Joiner.find_by_recipe_id(recipe.id) %>
+					<% photo_url = Joiner.find_by_recipe_id(recipe.id).photo.url %>
+					style = "
+						background-image:url(<%= photo_url %>);
+						-webkit-background-size:cover;
+						-moz-background-size:cover;
+						background-size:cover;
+						background-position: center;
+					}"
+					<% end %> >
+				<div class="col-sm-12">
+					<h3><%= recipe.title %></h3>
+			</div>
+		</a>
+		<% end %>
+	</div>
+<% else %>
+<p>Weirdo, you haven't saved anything yet.</p>
+<% end %>
+<h3><a class="pink" href="<%= root_path %>">Go find some more stuff you like.</a></h3>
+</div>
