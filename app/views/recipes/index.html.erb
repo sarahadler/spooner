@@ -2,8 +2,8 @@
 	<h1 class="super"><%= @ingredients %>, eh?</h1>
 	<% if @any %>
 	<% recipes = @any %>
-	<% elsif @both %>
-	<% recipes = @both %>
+	<% elsif @all %>
+	<% recipes = @all %>
 	<% end %>
 <% if @query.count > 1 %>
 	<div class="row">
@@ -11,7 +11,7 @@
 			<a class="btn btn-default <% if @any %> selected <% end %> pull-right" href="/recipes/search/any?ingredients=<%= @ingredients %>">SHOW RECIPES WITH <span class="super">ANY</span></a>
 		</div>
 		<div class="col-md-3">
-			<a class="btn btn-default <% if @both %> selected <% end %> pull-left" href="/recipes/search/both?ingredients=<%= @ingredients %>">SHOW RECIPES WITH <span class="super">BOTH</span></a>
+			<a class="btn btn-default <% if @all %> selected <% end %> pull-left" href="/recipes/search/all?ingredients=<%= @ingredients %>">SHOW RECIPES WITH <span class="super">all</span></a>
 		</div>
 <% end %>
 	</div>
@@ -31,8 +31,8 @@
 		<div class="col-md-8 col-md-offset-2">
 			<h3 class="skinny">Sorry honey. Nothing's been made precisely like that. Here are a few tried-and-true combos if you're feeling stumped.</h3>
 				<ul class="list-unstyled super">
-					<li><a href="/recipes/search/both?ingredients=chocolate%20and%20peanut%20butter">Chocolate and Peanut Butter</a></li>
-					<li><a href="/recipes/search/both?ingredients=bacon%20and%20sugar">Bacon and Sugar (together!)</a></li>
+					<li><a href="/recipes/search/all?ingredients=chocolate%20and%20peanut%20butter">Chocolate and Peanut Butter</a></li>
+					<li><a href="/recipes/search/all?ingredients=bacon%20and%20sugar">Bacon and Sugar (together!)</a></li>
 					<li><a href="/recipes/search/any?ingredients=ramen">Ramen</a></li>
 					<li><a href="/recipes/search/any?ingredients=cilantro,%20lime,%20pesto">Cilantro, Lime or Pesto</a></li>
 				</ul>

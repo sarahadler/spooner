@@ -12,9 +12,9 @@ def index
 	 		##########################################  MAKE PARAMS USABLE
 	 		@query = Recipe.make_searchable(params[:ingredients])
 
-	 		if params[:how] == 'both'
+	 		if params[:how] == 'all'
 
-			@both = Recipe.search_and(@query)
+			@all = Recipe.search_and(@query)
 
 			elsif params[:how] == 'any'
 
