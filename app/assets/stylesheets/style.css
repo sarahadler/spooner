@@ -131,6 +131,10 @@ button#submit {
 	margin: 20px;
 }
 
+.uppercase {
+	text-transform:uppercase;
+}
+
 .index {
 	text-align:center;
 	color:#ffffff;
