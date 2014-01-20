@@ -5,6 +5,9 @@
 	<% elsif @all %>
 	<% recipes = @all %>
 	<% end %>
+<% if @query.include?('nothing') %>
+<h4>Well aren't you clever. If you wanted nothing, you shouldn't have looked for something.</h4>
+<% else %>
 <% if @query.count > 1 %>
 	<div class="row uppercase">
 		<div class="col-xs-3 col-xs-offset-3">
@@ -38,6 +41,7 @@
 				</ul>
 			</div>
 		</div>
+<% end %>
 <% end %>
 
 			&nbsp;
