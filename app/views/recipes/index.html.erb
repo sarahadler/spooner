@@ -8,10 +8,10 @@
 <% if @query.count > 1 %>
 	<div class="row uppercase">
 		<div class="col-xs-3 col-xs-offset-3">
-			<p> <a class="btn  btn-default btn-lg <% if @any %> disabled<% end %>" href="/recipes/search/any?ingredients=<%= @ingredients %>">ANY</a><br><span class="hidden-xs"><%= @ingredients.split.join(' or ') %></span><p>
+			<p> <a class="btn  btn-default btn-lg <% if @any %> disabled<% end %>" href="/recipes/search/any?ingredients=<%= @ingredients %>">ANY</a><br><span class="hidden-xs"><%= @query.join(' or ') %></span><p>
 		</div>
 		<div class="col-xs-3">
-			<p><a class="btn btn-default btn-lg <% if @all %> disabled <% end %>" href="/recipes/search/all?ingredients=<%= @ingredients %>">ALL</a><br><span class="hidden-xs"><%= @ingredients.split.join(' and ') %> TOGETHER</span></p>
+			<p><a class="btn btn-default btn-lg <% if @all %> disabled <% end %>" href="/recipes/search/all?ingredients=<%= @ingredients %>">ALL</a><br><span class="hidden-xs"><%= @query.join(' and ') %> TOGETHER</span></p>
 		</div>
 <% end %>
 	</div>
